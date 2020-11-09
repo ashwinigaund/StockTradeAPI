@@ -15,7 +15,7 @@ import com.hackerrank.stocktrade.service.DataService;
 public class ResourcesController {
 
 	@Autowired
-	private DataService dataService;
+	DataService dataService;
 
 	@DeleteMapping()
 	public ResponseEntity<?> deleteAllTrade() {

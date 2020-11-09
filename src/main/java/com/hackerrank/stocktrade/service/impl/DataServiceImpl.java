@@ -17,8 +17,7 @@ import com.hackerrank.stocktrade.repository.TradeRepo;
 import com.hackerrank.stocktrade.service.DataService;
 
 @Service
-public class DataServiceImpl implements DataService {
-
+public class DataServiceImpl implements DataService{
 	@Autowired
 	private TradeRepo tradeRepo;
 
@@ -27,8 +26,8 @@ public class DataServiceImpl implements DataService {
 		tradeRepo.deleteAll();
 	}
 
-	@Override
 	@Transactional
+	@Override
 	public boolean addTrade(Trade trade) {
 		TradeEntity tradeEntity = new TradeEntity();
 		BeanUtils.copyProperties(trade, tradeEntity);
@@ -39,12 +38,10 @@ public class DataServiceImpl implements DataService {
 		}
 		return false;
 	}
-
 	@Override
 	public boolean existById(Long id) {
 		return tradeRepo.existsById(id);
 	}
-
 	@Override
 	public Trade findById(Long id) {
 		Trade trade = new Trade();
@@ -55,23 +52,19 @@ public class DataServiceImpl implements DataService {
 		}
 		return trade;
 	}
-
 	@Override
 	public List<TradeEntity> findAll() {
 		return tradeRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
 	}
-
 	@Override
 	public List<TradeEntity> findAllByUserId(Long userId) {
 		return tradeRepo.findAllByUserId(userId);
 	}
-
 	@Override
 	public List<TradeEntity> findTradeBySymbolAndType(String stockSymbol, String tradeType, Timestamp startDate,
 			Timestamp endDate) {
 		return tradeRepo.findTradeBySymbolAndType(stockSymbol, tradeType, startDate, endDate);
 	}
-
 	@Override
 	public List<TradeEntity> findStocks(String stockSymbol, Timestamp startDate, Timestamp endDate) {
 		return tradeRepo.findStocks(stockSymbol, startDate, endDate);

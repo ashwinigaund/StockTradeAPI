@@ -6,7 +6,9 @@ import java.util.List;
 import com.hackerrank.stocktrade.entity.TradeEntity;
 import com.hackerrank.stocktrade.model.Trade;
 
+
 public interface DataService {
+
 	public void deleteAllTrade();
 
 	public boolean addTrade(Trade trade);
